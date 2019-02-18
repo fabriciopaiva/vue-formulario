@@ -46,6 +46,11 @@
             </b-form-checkbox-group>
           </b-form-group>
 
+          <b-form-group id="exampleGroup5" label="Individual radios">
+            <b-form-radio value="A" v-model="form.group" name="some-radios">Option A</b-form-radio>
+            <b-form-radio value="B" v-model="form.group" name="some-radios">Option B</b-form-radio>
+          </b-form-group>
+
           <b-button type="submit" variant="primary">Submit</b-button>
           <b-button type="reset" variant="danger">Reset</b-button>
         </b-form>
@@ -68,6 +73,10 @@
           <b-col>Checks:</b-col>
           <b-col>{{ form.checked }}</b-col>
         </b-row>
+        <b-row>
+          <b-col>Group:</b-col>
+          <b-col>{{ form.group }}</b-col>
+        </b-row>
       </b-col>
     </b-row>
 
@@ -88,7 +97,8 @@ export default {
           email: '',
           name: '',
           food: null,
-          checked: []
+          checked: [],
+          group: ''
         },
         foods: [{ text: 'Select One', value: null }, 'Carrots', 'Beans', 'Tomatoes', 'Corn'],
         show: true
@@ -123,6 +133,7 @@ export default {
         this.form.name = ''
         this.form.food = null
         this.form.checked = []
+        this.form.group = ''
         /* Trick to reset/clear native browser form validation state */
         this.show = false
         this.$nextTick(() => {
