@@ -35,6 +35,47 @@
               placeholder="Enter name" />
           </b-form-group>
 
+          <b-form-group
+            id="exampleInputGroupPassword"
+            label="Password:"
+            label-for="exampleInputPassword"
+            description="We'll never share your password with anyone else."
+          >
+            <b-form-input
+              id="exampleInputPassword"
+              type="password"
+              v-model="form.password"
+              required
+              placeholder="Enter Password" />
+          </b-form-group>
+
+          <b-form-group
+            id="exampleInputGroupDate"
+            label="Date:"
+            label-for="exampleInputDate"
+          >
+            <b-form-input
+              id="exampleInputDate"
+              type="date"
+              v-model="form.date"
+              required
+              placeholder="Enter Date" />
+          </b-form-group>
+
+          <b-form-group
+            id="exampleInputGroupRange"
+            label="Range:"
+            label-for="exampleInputRange"
+          >
+            <b-form-input
+              id="exampleInputRange"
+              type="range"
+              v-model="form.range"
+              required
+              min="0"
+              max="10"
+              placeholder="Enter Range" />
+          </b-form-group>
           <b-form-group id="exampleInputGroup3" label="Food:" label-for="exampleInput3">
             <b-form-select id="exampleInput3" :options="foods" required v-model="form.food" />
           </b-form-group>
@@ -65,6 +106,22 @@
           <b-col>Name:</b-col>
           <b-col>{{ form.name }}</b-col>
         </b-row>
+
+        <b-row>
+          <b-col>Password:</b-col>
+          <b-col>{{ form.password }}</b-col>
+        </b-row>
+
+        <b-row>
+          <b-col>Date:</b-col>
+          <b-col>{{ form.date }}</b-col>
+        </b-row>
+
+        <b-row>
+          <b-col>Range:</b-col>
+          <b-col>{{ form.range }}</b-col>
+        </b-row>
+
         <b-row>
           <b-col>Food:</b-col>
           <b-col>{{ form.food }}</b-col>
@@ -98,6 +155,9 @@ export default {
           name: '',
           food: null,
           checked: [],
+          password: '',
+          date: new Date(),
+          range: 0,
           group: ''
         },
         foods: [{ text: 'Select One', value: null }, 'Carrots', 'Beans', 'Tomatoes', 'Corn'],
@@ -134,6 +194,7 @@ export default {
         this.form.food = null
         this.form.checked = []
         this.form.group = ''
+        this.password = ''
         /* Trick to reset/clear native browser form validation state */
         this.show = false
         this.$nextTick(() => {
